@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>New Tab</title>
+<style>
+		html, body {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		background-color: #0f0f0f;
+		font-family: 'Segoe UI', 'm6x11', sans-serif; /* fuente global */
+		color: white;
+		height: 100vh;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		height: 100vh;
+	}
+
+	#custom-search {
+		position: fixed;
+		top: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 400px;
+		max-width: 90vw;
+		padding: 12px 16px;
+		font-size: 20px;
+		border: none;
+		border-radius: 12px;
+		box-shadow: 0 2px 6px rgba(48, 48, 48, 0.3);
+		outline: none;
+		background-color: #1c1c1c;
+		color: white;
+		font-family: 'Segoe UI', 'm6x11', sans-serif; /* fuente para input */
+		z-index: 10;
+	}
+
+	.cuadrados-wrapper {
+		margin-top: 120px; /* espacio para input fijo */
+		height: calc(100vh - 90px - 40px); /* altura total menos barra y padding inferior */
+		display: flex;
+		justify-content: center;
+		align-items: center; /* para centrar verticalmente */
+		width: 100%;
+		padding: 0 10px 40px;
+		box-sizing: border-box;
+	}
+
+	.cuadrados {
+		display: grid;
+		grid-template-columns: repeat(3, 250px);
+		grid-template-rows: repeat(3, 250px);
+		gap: 20px;
+		max-width: calc(3 * 250px + 2 * 20px);
+		box-sizing: border-box;
+	}
+
+	.cuadrados > div {
+		width: 250px;
+		height: 250px;
+		border-radius: 0px;
+		cursor: pointer;
+		transition: box-shadow 0.3s ease;
+		position: relative;
+	}
+
+	.cuadrados > div > a {
+		display: block;
+		width: 100%;
+		height: 100%;
+		text-decoration: none;
+	}
+
+	.cuadrados > div:hover {
+		filter: brightness(1.1);
+	}
+
+	.youtube {
+		background-color: #d12d28;
+		box-shadow: 0 2px 10px #d12d2826;
+	}
+	.twitter {
+		background-color: #1DA1F2;
+		box-shadow: 0 2px 10px #1DA1F226;
+	}
+	.twitch {
+		background-color: #6441A4;
+		box-shadow: 0 2px 10px #6441A426;
+	}
+	.reddit {
+		background-color: #FF5700;
+		box-shadow: 0 2px 10px #FF570026;
+	}
+	.gmail {
+		background-color: #D44638;
+		box-shadow: 0 2px 10px #D4463826;
+	}
+	.whatsapp {
+		background-color: #28e050;
+		box-shadow: 0 2px 10px #28e05026;
+	}
+	.amazon {
+		background-color: #ebebeb;
+		box-shadow: 0 2px 10px #ebebeb26;
+	}
+	.netflix {
+		background-color: #E50914;
+		box-shadow: 0 2px 10px #E5091426;
+	}
+
+	.cuadrados > div.empty {
+		background: transparent;
+		box-shadow: none;
+		cursor: default;
+		pointer-events: none;
+	}
+</style>
+</head>
+<body>
+
+<input id="custom-search" type="text" placeholder="" autofocus>
+
+<div class="cuadrados-wrapper">
+	<div class="cuadrados">
+		<div class="youtube"><a href="http://www.youtube.com" target="_blank" rel="noopener"></a></div>
+		<div class="twitter"><a href="http://www.twitter.com" target="_blank" rel="noopener"></a></div>
+		<div class="twitch"><a href="http://www.twitch.tv" target="_blank" rel="noopener"></a></div>
+		<div class="reddit"><a href="http://www.reddit.com" target="_blank" rel="noopener"></a></div>
+		<div class="gmail"><a href="http://www.gmail.com" target="_blank" rel="noopener"></a></div>
+		<div class="whatsapp"><a href="https://web.whatsapp.com" target="_blank" rel="noopener"></a></div>
+		<div class="amazon"><a href="https://www.amazon.com/" target="_blank" rel="noopener"></a></div>
+		<div class="netflix"><a href="https://www.netflix.com/" target="_blank" rel="noopener"></a></div>
+
+		<div class="empty"></div>
+	</div>
+</div>
+
+<script>
+	document.getElementById("custom-search").addEventListener("keydown", function(event) {
+		if (event.key === "Enter") {
+			const query = this.value.trim().toLowerCase();
+			if (!query) return;
+
+			const shortcuts = {
+				y: "https://www.youtube.com", yt: "https://www.youtube.com", youtube: "https://www.youtube.com",
+				t: "https://www.twitter.com", x: "https://www.twitter.com", twitter: "https://www.twitter.com",
+				ig: "https://www.instagram.com", instagram: "https://www.instagram.com",
+				f: "https://www.facebook.com", fb: "https://www.facebook.com", facebook: "https://www.facebook.com",
+				tt: "https://www.tiktok.com", tiktok: "https://www.tiktok.com",
+				sc: "https://www.snapchat.com", snapchat: "https://www.snapchat.com",
+				r: "https://www.reddit.com", reddit: "https://www.reddit.com",
+				p: "https://www.pinterest.com", pinterest: "https://www.pinterest.com",
+				l: "https://www.linkedin.com", linkedin: "https://www.linkedin.com",
+				be: "https://www.bereal.com", bereal: "https://www.bereal.com",
+			};
+
+			if (shortcuts[query]) {
+				window.location.href = shortcuts[query];
+			} else if (query.includes(".") && !query.includes(" ")) {
+				let url = query.startsWith("http") ? query : "https://" + query;
+				window.location.href = url;
+			} else {
+				const googleSearch = "https://www.google.com/search?q=" + encodeURIComponent(query);
+				window.location.href = googleSearch;
+			}
+		}
+	});
+</script>
+
+</body>
+</html>
