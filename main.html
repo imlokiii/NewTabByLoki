@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="C:\Users\adrio\OneDrive\Escritorio\orson\style.css">
+<title>New Tab</title>
+</head>
+<body>
+
+<input id="custom-search" type="text" placeholder="" autofocus>
+
+<div class="cuadrados">
+	<div class="youtube">
+		<a href="http://www.youtube.com" style="display:block;height:100%;width:100%"></a>
+	</div>
+	<div class="twitter">
+		<a href="http://www.twitter.com" style="display:block;height:100%;width:100%"></a>
+	</div>
+	<div class="twitch">
+		<a href="http://www.twitch.tv" style="display:block;height:100%;width:100%"></a>
+	</div>
+	<div class="reddit">
+		<a href="http://www.reddit.com" style="display:block;height:100%;width:100%"></a>
+	</div>
+	<div class="gmail">
+		<a href="http://www.gmail.com" style="display:block;height:100%;width:100%"></a>
+	</div>
+	<div class="whatsapp">
+		<a href="https://web.whatsapp.com" style="display:block;height:100%;width:100%"></a>
+	</div>
+	<div class="amazon">
+		<a href="https://www.amazon.com/" style="display:block;height:100%;width:100%"></a>
+	</div>
+	<div class="netflix">
+		<a href="https://www.netflix.com/" style="display:block;height:100%;width:100%"></a>
+	</div>
+</div>
+
+<script>
+document.getElementById("custom-search").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		const query = this.value.trim();
+		if (!query) return;
+
+		if (query.includes(".") && !query.includes(" ")) {
+			let url = query.startsWith("http") ? query : "https://" + query;
+			window.location.href = url;
+		} else {
+			const googleSearch = "https://www.google.com/search?q=" + encodeURIComponent(query);
+			window.location.href = googleSearch;
+		}
+	}
+});
+</script>
+
+</body>
+</html>
+
