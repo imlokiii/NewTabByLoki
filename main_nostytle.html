@@ -245,5 +245,14 @@
 	});
 </script>
 
+<script>
+  const searchInput = document.getElementById('custom-search');
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      searchInput.focus();
+    }
+  });
+</script>
+	
 </body>
 </html>
