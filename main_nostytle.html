@@ -150,7 +150,9 @@
 			const query = this.value.trim().toLowerCase();
 			if (!query) return;
 
+			// Diccionario de accesos rápidos ampliado
 			const shortcuts = {
+				// Social Media
 				y: "https://www.youtube.com", yt: "https://www.youtube.com", youtube: "https://www.youtube.com",
 				t: "https://www.twitter.com", x: "https://www.twitter.com", twitter: "https://www.twitter.com",
 				ig: "https://www.instagram.com", instagram: "https://www.instagram.com",
@@ -161,6 +163,73 @@
 				p: "https://www.pinterest.com", pinterest: "https://www.pinterest.com",
 				l: "https://www.linkedin.com", linkedin: "https://www.linkedin.com",
 				be: "https://www.bereal.com", bereal: "https://www.bereal.com",
+				g: "https://www.github.com", github: "https://www.github.com",
+
+				// AI Tools
+				chatgpt: "https://chat.openai.com", gpt: "https://chat.openai.com",
+				bard: "https://bard.google.com", gemini: "https://gemini.google.com",
+				claude: "https://claude.ai", copilot: "https://copilot.microsoft.com",
+				poe: "https://poe.com", midjourney: "https://www.midjourney.com",
+				dalle: "https://openai.com/dall-e", sora: "https://openai.com/sora",
+
+				// Entertainment
+				n: "https://www.netflix.com", nf: "https://www.netflix.com", netflix: "https://www.netflix.com",
+				d: "https://www.disneyplus.com", ds: "https://www.disneyplus.com",
+				disney: "https://www.disneyplus.com", disneyplus: "https://www.disneyplus.com",
+				hbo: "https://www.max.com", max: "https://www.max.com",
+				prime: "https://www.primevideo.com", primevideo: "https://www.primevideo.com",
+				sp: "https://open.spotify.com", spotify: "https://open.spotify.com",
+				ttv: "https://www.twitch.tv", twitch: "https://www.twitch.tv",
+				crunchy: "https://www.crunchyroll.com", crunch: "https://www.crunchyroll.com", crunchyroll: "https://www.crunchyroll.com",
+				st: "https://www.stan.com.au", stan: "https://www.stan.com.au",
+
+				// Shopping
+				a: "https://www.amazon.com", amazon: "https://www.amazon.com",
+				ebay: "https://www.ebay.com", etsy: "https://www.etsy.com",
+				sh: "https://shopee.com", shopee: "https://shopee.com",
+				al: "https://www.alibaba.com", alibaba: "https://www.alibaba.com",
+				ali: "https://www.aliexpress.com", aliexpress: "https://www.aliexpress.com",
+				ml: "https://www.mercadolibre.com", mercadolibre: "https://www.mercadolibre.com",
+
+				// Communication & Productivity
+				g: "https://www.gmail.com", gm: "https://www.gmail.com", gmail: "https://www.gmail.com",
+				w: "https://web.whatsapp.com", wa: "https://web.whatsapp.com", whatsapp: "https://web.whatsapp.com",
+				tg: "https://web.telegram.org", telegram: "https://web.telegram.org",
+				zoom: "https://zoom.us", meet: "https://meet.google.com",
+				slack: "https://slack.com", notion: "https://www.notion.so",
+				todo: "https://todo.microsoft.com",
+				drive: "https://drive.google.com", googledrive: "https://drive.google.com",
+				dropbox: "https://www.dropbox.com",
+				cal: "https://calendar.google.com", calendar: "https://calendar.google.com",
+				docs: "https://docs.google.com", sheets: "https://sheets.google.com",
+				trello: "https://trello.com",
+
+				// Tech & Dev
+				gh: "https://github.com", github: "https://github.com",
+				gitlab: "https://gitlab.com",
+				stack: "https://stackoverflow.com", stackoverflow: "https://stackoverflow.com",
+				replit: "https://replit.com",
+				vsc: "https://vscode.dev", vscode: "https://vscode.dev",
+				figma: "https://www.figma.com", canva: "https://www.canva.com",
+				glitch: "https://glitch.com",
+				w3: "https://www.w3schools.com", w3schools: "https://www.w3schools.com",
+
+				// News
+				cnn: "https://www.cnn.com", bbc: "https://www.bbc.com",
+				nyt: "https://www.nytimes.com", nytimes: "https://www.nytimes.com",
+				wp: "https://www.washingtonpost.com",
+				reu: "https://www.reuters.com", reuters: "https://www.reuters.com",
+				verge: "https://www.theverge.com", theverge: "https://www.theverge.com",
+				tech: "https://techcrunch.com", techcrunch: "https://techcrunch.com",
+
+				// Others
+				imdb: "https://www.imdb.com",
+				maps: "https://maps.google.com", googlemaps: "https://maps.google.com",
+				speed: "https://www.speedtest.net", speedtest: "https://www.speedtest.net",
+				weather: "https://www.weather.com",
+				archive: "https://archive.org",
+				waifu: "https://waifulabs.com",
+				"10m": "https://10minutemail.com", tempmail: "https://10minutemail.com"
 			};
 
 			if (shortcuts[query]) {
