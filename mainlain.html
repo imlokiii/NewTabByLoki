@@ -420,11 +420,6 @@ tiles.forEach(tile => {
 	wrapper.appendChild(img);
 	tile.appendChild(wrapper);
 
-	const label = document.createElement('div');
-	label.className = 'tile-label';
-	label.textContent = imgSrc.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
-	tile.appendChild(label);
-
 	if (href) {
 		const a = document.createElement('a');
 		a.href = href;
